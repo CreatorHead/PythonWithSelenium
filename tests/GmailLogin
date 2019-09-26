@@ -1,0 +1,31 @@
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+
+driver = webdriver.Chrome('C:/Users/user/Documents/dir/chromedriver.exe')  # Path to the WebDriver exe file
+driver.get('https://www.gmail.com')
+driver.maximize_window()
+driver.implicitly_wait(5000)
+
+user_id = driver.find_element_by_id('identifierId')
+user_id.send_keys('my_email_id')
+
+next_button = driver.find_element_by_xpath("//span[text() ='Next']")
+next_button.click()
+driver.implicitly_wait(5000)
+
+password_textbox = driver.find_element_by_xpath("//input[@type='password' and @name='password']")
+password_textbox.send_keys('my_password')
+
+next_button = driver.find_element_by_xpath("//span/span[text()='Next']")
+
+
+def find(driver):
+    element = driver.find_element_by_xpath("//span/span[text()='Next']")
+    if (element):
+        return element
+    else:
+        return False
+
+
+next_button = WebDriverWait(driver, 5).until(find)
+next_button.click()
