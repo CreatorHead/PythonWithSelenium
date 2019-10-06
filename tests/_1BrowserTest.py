@@ -7,3 +7,4 @@ driver.implicitly_wait(10000)  #Waits for 10 seconds
 driver.close() #close the browser
 
 
+
